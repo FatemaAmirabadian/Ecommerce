@@ -1,22 +1,13 @@
 "use client";
-import React, { useState } from "react";
 import FormInput from "@/components/elements/FormInput";
 
-function EditForm({ product }) {
-  const [productForm, setProductForm] = useState(product);
+function EditForm({ editForm, setEditForm}) {
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setProductForm({ ...productForm, [name]: value });
+    setEditForm({ ...editForm, [name]: value });
   };
-
-  const saveHandler = async function () {
-    await fetch(`/api/product/edit/${productForm._id}`, {
-      method: "PATCH",
-      body: JSON.stringify(productForm),
-      headers: { "Content-Type": "application/json" },
-    });
-  };
-
+  
   return (
     <div>
       <form>
@@ -24,42 +15,42 @@ function EditForm({ product }) {
           name="name"
           label="Name"
           type="text"
-          value={productForm.name}
+          value={editForm.name}
           onChange={changeHandler}
         />
         <FormInput
           name="price"
           label="Price"
           type="number"
-          value={productForm.price}
+          value={editForm.price}
           onChange={changeHandler}
         />
         <FormInput
           name="url1"
           label="First Image Url"
           type="text"
-          value={productForm.url1}
+          value={editForm.url1}
           onChange={changeHandler}
         />
         <FormInput
           name="url2"
           label="Second Image Url"
           type="text"
-          value={productForm.url2}
+          value={editForm.url2}
           onChange={changeHandler}
         />
         <FormInput
           name="url3"
           label="Third Image Url"
           type="text"
-          value={productForm.url3}
+          value={editForm.url3}
           onChange={changeHandler}
         />
         <FormInput
           name="url4"
           label="Fourth Image Url"
           type="text"
-          value={productForm.url4}
+          value={editForm.url4}
           onChange={changeHandler}
         />
         <div className="select_container">
@@ -69,7 +60,7 @@ function EditForm({ product }) {
             name="category"
             id="category"
             onChange={changeHandler}
-            value={productForm.category}
+            value={editForm.category}
           >
             <option value="Electronic">Electronic</option>
             <option value="Camera">Camera</option>
@@ -89,14 +80,9 @@ function EditForm({ product }) {
           name="stock"
           label="Stock"
           type="number"
-          value={productForm.stock}
+          value={editForm.stock}
           onChange={changeHandler}
         />
-        <div>
-          <button onClick={saveHandler} className="save_button w-full p-1 m-1">
-            save
-          </button>
-        </div>
       </form>
     </div>
   );
