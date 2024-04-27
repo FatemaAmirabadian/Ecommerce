@@ -25,11 +25,3 @@ export async function GET(request, context) {
     });
   }
 }
-
-// export default async function handler(req, res) {
-//   const { productId } = req.query;
-//   const productRes = await fetch(`http://localhost:3000/api/product/${productId}`);
-//   const productData = await productRes.json();
-
-//   res.status(200).json(productData);
-// }

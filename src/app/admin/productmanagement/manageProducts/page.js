@@ -1,5 +1,5 @@
 import React from 'react'
-import ManageProducts from '@/components/templates/ManageProducts'
+import ManageProducts from '../../../components/templates/ManageProducts'
 
 function page() {
   return (

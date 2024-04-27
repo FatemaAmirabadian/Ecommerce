@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ProductForm from "@/components/templates/ProductForm";
+import ProductForm from "../../../components/templates/ProductForm";
 import { useRouter } from "next/navigation";
 
 function page() {
@@ -46,7 +46,6 @@ function page() {
     //   toast.success(data.message);
     //   router.refresh();
     // }
-    console.log(data);
     if (!data.error) {
       setProductForm({
         name: "",
@@ -59,6 +58,7 @@ function page() {
         category: "",
         stock: "",
       });
+      router.push('/admin/productmanagement/manageProducts')
     }
   };
 

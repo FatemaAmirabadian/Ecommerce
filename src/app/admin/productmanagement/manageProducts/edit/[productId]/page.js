@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import EditForm from "@/components/templates/EditForm";
+import EditForm from "../../../../../components/templates/EditForm";
 
 function page(context) {
   const router = useRouter();

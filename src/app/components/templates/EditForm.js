@@ -1,5 +1,5 @@
 "use client";
-import FormInput from "@/components/elements/FormInput";
+import FormInput from "../elements/FormInput";
 
 function EditForm({ editForm, setEditForm}) {
 
@@ -15,42 +15,42 @@ function EditForm({ editForm, setEditForm}) {
           name="name"
           label="Name"
           type="text"
-          value={editForm.name}
+          value={editForm?.name}
           onChange={changeHandler}
         />
         <FormInput
           name="price"
           label="Price"
           type="number"
-          value={editForm.price}
+          value={editForm?.price}
           onChange={changeHandler}
         />
         <FormInput
           name="url1"
           label="First Image Url"
           type="text"
-          value={editForm.url1}
+          value={editForm?.url1}
           onChange={changeHandler}
         />
         <FormInput
           name="url2"
           label="Second Image Url"
           type="text"
-          value={editForm.url2}
+          value={editForm?.url2}
           onChange={changeHandler}
         />
         <FormInput
           name="url3"
           label="Third Image Url"
           type="text"
-          value={editForm.url3}
+          value={editForm?.url3}
           onChange={changeHandler}
         />
         <FormInput
           name="url4"
           label="Fourth Image Url"
           type="text"
-          value={editForm.url4}
+          value={editForm?.url4}
           onChange={changeHandler}
         />
         <div className="select_container">
@@ -60,7 +60,7 @@ function EditForm({ editForm, setEditForm}) {
             name="category"
             id="category"
             onChange={changeHandler}
-            value={editForm.category}
+            value={editForm?.category}
           >
             <option value="Electronic">Electronic</option>
             <option value="Camera">Camera</option>
@@ -80,7 +80,7 @@ function EditForm({ editForm, setEditForm}) {
           name="stock"
           label="Stock"
           type="number"
-          value={editForm.stock}
+          value={editForm?.stock}
           onChange={changeHandler}
         />
       </form>

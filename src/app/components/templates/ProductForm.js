@@ -3,13 +3,12 @@ import React from "react";
 import FormInput from "../elements/FormInput";
 
 function ProductForm({ productForm, setProductForm }) {
-  const { name, price, url1, url2, url3, url4, category, stock } =
-    productForm;
+  const { name, price, url1, url2, url3, url4, category, stock } = productForm;
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setProductForm({ ...productForm, [name]: value });
   };
-  
+
   return (
     <div className="form_container">
       <form>
@@ -64,6 +63,7 @@ function ProductForm({ productForm, setProductForm }) {
             onChange={changeHandler}
             value={category}
           >
+            <option className="font-bold">Choose Category:</option>
             <option value="Electronic">Electronic</option>
             <option value="Camera">Camera</option>
             <option value="Laptop">Laptop</option>
