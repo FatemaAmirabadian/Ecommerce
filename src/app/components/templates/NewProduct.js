@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ProductForm from "./ProductForm";
 import CancelButton from "../elements/CancelButton";
 import { useRouter } from "next/navigation";
+
 function NewProduct() {
   const router = useRouter();
   const [productForm, setProductForm] = useState({
@@ -19,28 +20,12 @@ function NewProduct() {
   });
 
   const saveHandler = async () => {
-    console.log(productForm);
-    const res = await fetch("https://crm-pi-ten.vercel.app/api/product", {
+    await fetch("https://crm-pi-ten.vercel.app/api/product", {
       method: "POST",
       body: JSON.stringify(productForm),
       headers: { "Content-Type": "application/json" },
     });
-    const data = await res.json();
-    if (!data.error) {
-      setProductForm({
-        id: "",
-        title: "",
-        price: "",
-        description: "",
-        category: "",
-        image: "",
-        rating: {
-          rate: "",
-          count: "",
-        },
-      });
       router.push("/admin/productmanagement/manageProducts");
-    }
   };
 
   return (
