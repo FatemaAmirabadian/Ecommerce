@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 
 function ProductCard({ product }) {
   const productId = product._id;
   const deleteHandler = async function () {
     const res = await fetch(
-      `http://localhost:3000/api/product/delete/${productId}`,
+      `/api/product/delete/${productId}`,
       {
         method: "DELETE",
       }
@@ -17,22 +16,16 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="product_card flex">
-      <div className="product_card_info">
-        <div>{product.name}</div>
-        <div>{product.price}$</div>
-        <div>{product.category}</div>
-        <div>{product.stock}</div>
-        {/* <div>{product.createdAt}</div> */}
-        {/* <div>{product.updatedAt}</div> */}
-      </div>
+    <div className="product_card">
+      <div className="text-xl">id:<span className="ml-2">{product.id}</span></div>
+      <div className="text-xl">title:<span className="ml-2">{product.title}</span></div>
+      <div className="text-xl">price:<span className="ml-2">{product.price}</span></div>
+      <div className="text-xl">category:<span className="ml-2">{product.category}</span></div>
+      <div className="text-xl">image:<span className="ml-2">{product.image}</span></div>
+      <div className="text-xl">rate:<span className="ml-2">{product.rating.rate}</span></div>
+      <div className="text-xl">count:<span className="ml-2">{product.rating.count}</span></div>
       <div className="flex m-auto">
-        <Link
-          href={`http://localhost:3000/admin/productmanagement/manageProducts/edit/${productId}`}
-        >
-          <button className="save_button p-1 m-1">edit</button>
-        </Link>
-        <button onClick={deleteHandler} className="cancel_button p-1 m-1">
+        <button onClick={deleteHandler} className="cancel_button py-1 px-3 mt-2">
           remove
         </button>
       </div>

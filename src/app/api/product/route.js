@@ -8,10 +8,10 @@ export async function GET() {
   } catch (err) {
     console.log(err);
     return NextResponse.json({ error: "error in connect db" }, { status: 500 });
-  } 
+  }
 
   const products = await Product.find();
-  
+
   if (!products) {
     return NextResponse.json({ message: "no products found" }, { status: 400 });
   }
@@ -24,7 +24,6 @@ export async function GET() {
   );
 }
 
-
 export async function POST(request) {
   try {
     await connectDB();
@@ -33,60 +32,28 @@ export async function POST(request) {
     return NextResponse.json({ error: "error in connect db" }, { status: 500 });
   }
 
-  const { name, price, url1, url2, url3, url4, category, stock } =
-    await request.json();
-  if (!name)
-    return NextResponse.json(
-      { error: "please enter the name" },
-      { status: 400 }
-    );
+  const {
+    id,
+    title,
+    price,
+    description,
+    category,
+    image,
+    rating: { rate, count },
+  } = await request.json();
 
-  if (!price)
-    return NextResponse.json(
-      { error: "please enter the price" },
-      { status: 400 }
-    );
-
-  if (!url1)
-    return NextResponse.json(
-      { error: "please enter the first image url" },
-      { status: 400 }
-    );
-
-  if (!category)
-    return NextResponse.json(
-      { error: "please enter the category" },
-      { status: 400 }
-    );
-
-  if (!stock)
-    return NextResponse.json(
-      { error: "please enter the stock" },
-      { status: 400 }
-    );
-
-  try {
-    const product = await Product.create({
-      name,
-      price,
-      url1,
-      url2,
-      url3,
-      url4,
-      category,
-      stock,
-    });
-    console.log(product);
-    return NextResponse.json(
-      { message: "new product added to db" },
-      { status: 201 }
-    );
-  } catch (err) {
-    console.log(err);
-    return NextResponse.json({
-      status: "failed",
-      message: "Error in storing data in DB",
-    });
-  }
+  const product = await Product.create({
+    id,
+    title,
+    price,
+    description,
+    category,
+    image,
+    rating: { rate, count },
+  });
+  console.log(product);
+  return NextResponse.json(
+    { message: "new product added to db" },
+    { status: 201 }
+  );
 }
-

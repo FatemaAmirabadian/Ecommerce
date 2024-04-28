@@ -3,20 +3,41 @@ import React from "react";
 import FormInput from "../elements/FormInput";
 
 function ProductForm({ productForm, setProductForm }) {
-  const { name, price, url1, url2, url3, url4, category, stock } = productForm;
+  const { id, title, price, description, category, image, rating } =
+    productForm;
+  const { rate, count } = rating;
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setProductForm({ ...productForm, [name]: value });
+    if (name === "rating.rate" || name === "rating.count") {
+      const [ratingKey, subKey] = name.split(".");
+      setProductForm({
+        ...productForm,
+        [ratingKey]: {
+          ...productForm[ratingKey],
+          [subKey]: value,
+        },
+      });
+    } else {
+      setProductForm({ ...productForm, [name]: value });
+    }
   };
 
   return (
     <div className="form_container">
       <form>
         <FormInput
-          name="name"
-          label="Name"
+          name="id"
+          label="Id"
+          type="number"
+          value={id}
+          onChange={changeHandler}
+        />
+        <FormInput
+          name="title"
+          label="Title"
           type="text"
-          value={name}
+          value={title}
           onChange={changeHandler}
         />
         <FormInput
@@ -27,62 +48,39 @@ function ProductForm({ productForm, setProductForm }) {
           onChange={changeHandler}
         />
         <FormInput
-          name="url1"
-          label="First Image Url"
+          name="description"
+          label="Description"
           type="text"
-          value={url1}
+          value={description}
           onChange={changeHandler}
         />
         <FormInput
-          name="url2"
-          label="Second Image Url"
+          name="category"
+          label="Category"
           type="text"
-          value={url2}
+          value={category}
           onChange={changeHandler}
         />
         <FormInput
-          name="url3"
-          label="Third Image Url"
+          name="image"
+          label="Image"
           type="text"
-          value={url3}
+          value={image}
           onChange={changeHandler}
         />
         <FormInput
-          name="url4"
-          label="Fourth Image Url"
-          type="text"
-          value={url4}
-          onChange={changeHandler}
-        />
-        <div className="select_container">
-          <p className="select_label">Choose a category:</p>
-          <select
-            className="select_input"
-            name="category"
-            id="category"
-            onChange={changeHandler}
-            value={category}
-          >
-            <option className="font-bold">Choose Category:</option>
-            <option value="Electronic">Electronic</option>
-            <option value="Camera">Camera</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Headphone">Headphone</option>
-            <option value="Food">Food</option>
-            <option value="Book">Book</option>
-            <option value="Cloth">Cloth</option>
-            <option value="Shoe">Shoe</option>
-            <option value="Beauty/Health">Beauty/Health</option>
-            <option value="Sports">Sports</option>
-            <option value="Home">Home</option>
-          </select>
-        </div>
-        <FormInput
-          name="stock"
-          label="Stock"
+          name="rating.rate"
+          label="Rating"
           type="number"
-          value={stock}
+          value={rate}
+          onChange={changeHandler}
+        />
+
+        <FormInput
+          name="rating.count"
+          label="Rating Count"
+          type="number"
+          value={count}
           onChange={changeHandler}
         />
       </form>

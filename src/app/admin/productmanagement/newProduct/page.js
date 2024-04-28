@@ -5,60 +5,46 @@ import { useRouter } from "next/navigation";
 
 function page() {
   const router = useRouter();
-  
+
   const [productForm, setProductForm] = useState({
-    name: "",
+    id: "",
+    title: "",
     price: "",
     description: "",
-    url1: "",
-    url2: "",
-    url3: "",
-    url4: "",
     category: "",
-    stock: "",
+    image: "",
+    rating: {
+      rate: "",
+      count: "",
+    },
   });
 
   const cancelHandler = () => {
-    setProductForm({
-      name: "",
-      price: "",
-      description: "",
-      url1: "",
-      url2: "",
-      url3: "",
-      url4: "",
-      category: "",
-      stock: "",
-    });
     router.push("/");
   };
 
   const saveHandler = async () => {
-    const res = await fetch("/api/product", {
+    console.log(productForm);
+    const res = await fetch("http://localhost:3000/api/product", {
       method: "POST",
       body: JSON.stringify(productForm),
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    // if (data.error) {
-    //   toast.error(data.error);
-    // } else {
-    //   toast.success(data.message);
-    //   router.refresh();
-    // }
     if (!data.error) {
       setProductForm({
-        name: "",
+        id: "",
+        title: "",
         price: "",
         description: "",
-        url1: "",
-        url2: "",
-        url3: "",
-        url4: "",
         category: "",
-        stock: "",
+        image: "",
+        rating: {
+          rate: "",
+          count: "",
+        },
       });
-      router.push('/admin/productmanagement/manageProducts')
+      router.push("/admin/productmanagement/manageProducts");
     }
   };
 
