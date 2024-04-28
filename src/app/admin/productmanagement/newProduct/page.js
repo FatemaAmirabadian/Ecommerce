@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import ProductForm from "../../../components/templates/ProductForm";
-import { useRouter } from "next/navigation";
+import CancelButton from "@/app/components/elements/CancelButton";
 
 function page() {
-  const router = useRouter();
 
   const [productForm, setProductForm] = useState({
     id: "",
@@ -18,10 +17,6 @@ function page() {
       count: "",
     },
   });
-
-  const cancelHandler = () => {
-    router.push("/");
-  };
 
   const saveHandler = async () => {
     console.log(productForm);
@@ -54,17 +49,12 @@ function page() {
       <ProductForm productForm={productForm} setProductForm={setProductForm} />
       <div className="newproduct_buttons">
         <button
-          className="productform_button cancel_button"
-          onClick={cancelHandler}
-        >
-          Cancel
-        </button>
-        <button
           className="productform_button save_button"
           onClick={saveHandler}
         >
           Save
         </button>
+        <CancelButton/>
       </div>
     </div>
   );

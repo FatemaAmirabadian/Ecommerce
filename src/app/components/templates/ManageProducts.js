@@ -13,7 +13,7 @@ async function ManageProducts() {
       <div className="text-center my-10 text-3xl">all products</div>
       <div>
         {products.map((product) => (
-          <div>
+          <div key={product.id}>
             <ProductCard product={product} />
           </div>
         ))}
