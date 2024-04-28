@@ -19,7 +19,7 @@ function NewProduct() {
 
   const saveHandler = async () => {
     console.log(productForm);
-    const res = await fetch("http://localhost:3000/api/product", {
+    const res = await fetch("https://crm-pi-ten.vercel.app/api/product", {
       method: "POST",
       body: JSON.stringify(productForm),
       headers: { "Content-Type": "application/json" },

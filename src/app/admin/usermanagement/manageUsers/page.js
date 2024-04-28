@@ -2,7 +2,7 @@ import React from "react";
 import UserCard from "../../../components/modules/UserCard";
 
 async function page() {
-  const res = await fetch("https://e-commerce-eight-sand.vercel.app/api/user", {
+  const res = await fetch("https://crm-pi-ten.vercel.app/api/user", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });

@@ -5,7 +5,7 @@ function ProductCard({ product }) {
   const productId = product._id;
   const deleteHandler = async function () {
     const res = await fetch(
-      `/api/product/delete/${productId}`,
+      `https://crm-pi-ten.vercel.app/api/product/delete/${productId}`,
       {
         method: "DELETE",
       }
