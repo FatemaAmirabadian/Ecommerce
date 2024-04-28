@@ -8,7 +8,6 @@ async function page() {
   });
   const data = await res.json();
   const users = await data.data;
-  console.log(users);
 
   return (
     <div>

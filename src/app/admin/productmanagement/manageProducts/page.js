@@ -1,9 +1,21 @@
 import React from 'react'
-import ManageProducts from '../../../components/templates/ManageProducts'
+import ProductCard from '@/app/components/modules/ProductCard';
 
-function page() {
+async function page() {
+  const res = await fetch("https://crm-pi-ten.vercel.app/api/product", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  const data = await res.json();
+  const products = await data.data;
   return (
-    <div><ManageProducts/></div>
+    <div>
+      {products.map((product) => (
+          <div key={product._id}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+    </div>
   )
 }
 
