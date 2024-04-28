@@ -1,9 +1,10 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import ProductForm from "./ProductForm";
 import CancelButton from "../elements/CancelButton";
+import { useRouter } from "next/navigation";
 function NewProduct() {
-    
+  const router = useRouter();
   const [productForm, setProductForm] = useState({
     id: "",
     title: "",
@@ -53,10 +54,10 @@ function NewProduct() {
         >
           Save
         </button>
-        <CancelButton/>
+        <CancelButton />
       </div>
     </div>
-  )
+  );
 }
 
-export default NewProduct
+export default NewProduct;
