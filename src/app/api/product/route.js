@@ -17,10 +17,14 @@ export async function GET() {
   }
 
   return NextResponse.json(
+    { data: products },
     {
-      data: products,
-    },
-    { status: 200 }
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
+        "Access-Control-Allow-Methods": "GET", // Allow only GET requests
+      },
+    }
   );
 }
 
@@ -54,6 +58,12 @@ export async function POST(request) {
   console.log(product);
   return NextResponse.json(
     { message: "new product added to db" },
-    { status: 201 }
+    {
+      status: 201,
+      headers: {
+        "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
+        "Access-Control-Allow-Methods": "POST", // Allow only POST requests
+      },
+    }
   );
 }
