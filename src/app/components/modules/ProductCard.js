@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 function ProductCard({ product }) {
-  console.log({ product });
+  const [showDetails, setShowDetails] = useState(false);
+
   const productId = product._id;
+
   const deleteHandler = async function () {
     const res = await fetch(
       `https://crm-pi-ten.vercel.app/api/product/delete/${productId}`,
@@ -13,10 +15,10 @@ function ProductCard({ product }) {
         cache: "no-store",
       }
     );
+  };
 
-    if (res.status === 200) {
-      window.location.reload();
-    }
+  const detailsHandler = () => {
+    setShowDetails(!showDetails); // Toggle the state of showDetails
   };
 
   return (
@@ -30,19 +32,29 @@ function ProductCard({ product }) {
       <div className="text-xl">
         price:<span className="ml-2">{product.price}</span>
       </div>
-      <div className="text-xl">
-        category:<span className="ml-2">{product.category}</span>
-      </div>
-      <div className="text-xl">
-        image:<span className="ml-2">{product.image}</span>
-      </div>
-      <div className="text-xl">
-        rate:<span className="ml-2">{product.rating.rate}</span>
-      </div>
-      <div className="text-xl">
-        count:<span className="ml-2">{product.rating.count}</span>
-      </div>
+      {showDetails && (
+        <>
+          <div className="text-xl">
+            category:<span className="ml-2">{product.category}</span>
+          </div>
+          <div className="text-xl">
+            image:<span className="ml-2">{product.image}</span>
+          </div>
+          <div className="text-xl">
+            rate:<span className="ml-2">{product.rating.rate}</span>
+          </div>
+          <div className="text-xl">
+            count:<span className="ml-2">{product.rating.count}</span>
+          </div>
+        </>
+      )}
       <div className="flex m-auto">
+        <button
+          onClick={detailsHandler}
+          className="save_button py-1 px-3 mt-2 mx-auto"
+        >
+          {showDetails ? "Hide Details" : "Details"}
+        </button>
         <button
           onClick={deleteHandler}
           className="cancel_button py-1 px-3 mt-2 mx-auto"
