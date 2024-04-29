@@ -2,6 +2,22 @@ import Product from "@/models/Product";
 import connectDB from "@/utils/connectDB";
 import { NextResponse } from "next/server";
 
+export async function OPTIONS() {
+  // Set CORS headers for OPTIONS requests
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin":
+          "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE", // Specify allowed methods
+        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify allowed headers
+      },
+    }
+  );
+}
+
 export async function GET() {
   try {
     await connectDB();
@@ -21,8 +37,8 @@ export async function GET() {
     {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app/", // Allow requests only from this domain
-        // "Access-Control-Allow-Methods": "GET", // Allow only GET requests
+        "Access-Control-Allow-Origin":
+          "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
       },
     }
   );
@@ -61,8 +77,8 @@ export async function POST(request) {
     {
       status: 201,
       headers: {
-        "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
-        "Access-Control-Allow-Methods": "POST", // Allow only POST requests
+        "Access-Control-Allow-Origin":
+          "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
       },
     }
   );
