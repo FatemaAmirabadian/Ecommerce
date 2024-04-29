@@ -1,14 +1,16 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 
-function page() {
+function Page() {
   return (
-    <div className="form_container">
-      <Link href={"/admin/usermanagement/manageUsers"}>
-        <div className="form_title">manage all users</div>
+    <div className="max-w-lg mx-auto mt-4">
+      <Link href="/admin/usermanagement/manageUsers">
+        <span className="block bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-md">
+          Manage All Users
+        </span>
       </Link>
     </div>
   );
 }
 
-export default page;
+export default Page;

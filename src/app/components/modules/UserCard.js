@@ -2,6 +2,7 @@
 import React from "react";
 
 function UserCard({ user }) {
+  console.log({user});
   return (
     <div className="product_card flex">
         <div>{user.email}</div>

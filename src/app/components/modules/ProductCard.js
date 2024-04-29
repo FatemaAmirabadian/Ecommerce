@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useState } from "react";
 
 function ProductCard({ product }) {
@@ -7,14 +7,21 @@ function ProductCard({ product }) {
   const productId = product._id;
 
   const deleteHandler = async function () {
-    const res = await fetch(
-      `https://crm-pi-ten.vercel.app/api/product/delete/${productId}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        cache: "no-store",
-      }
-    );
+    try {
+      const res = await fetch(
+        `https://crm-pi-ten.vercel.app/api/product/delete/${productId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          cache: "no-store",
+        }
+      );
+
+      // Assuming successful deletion, you can handle UI updates or notifications here
+      console.log("Product deleted successfully");
+    } catch (error) {
+      console.error("Error deleting product:", error.message);
+    }
   };
 
   const detailsHandler = () => {
@@ -22,45 +29,33 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="product_card">
-      <div className="text-xl">
-        id:<span className="ml-2">{product.id}</span>
-      </div>
-      <div className="text-xl">
-        title:<span className="ml-2">{product.title}</span>
-      </div>
-      <div className="text-xl">
-        price:<span className="ml-2">{product.price}</span>
-      </div>
-      {showDetails && (
-        <>
-          <div className="text-xl">
-            category:<span className="ml-2">{product.category}</span>
-          </div>
-          <div className="text-xl">
-            image:<span className="ml-2">{product.image}</span>
-          </div>
-          <div className="text-xl">
-            rate:<span className="ml-2">{product.rating.rate}</span>
-          </div>
-          <div className="text-xl">
-            count:<span className="ml-2">{product.rating.count}</span>
-          </div>
-        </>
-      )}
-      <div className="flex m-auto">
-        <button
-          onClick={detailsHandler}
-          className="save_button py-1 px-3 mt-2 mx-auto"
-        >
-          {showDetails ? "Hide Details" : "Details"}
-        </button>
-        <button
-          onClick={deleteHandler}
-          className="cancel_button py-1 px-3 mt-2 mx-auto"
-        >
-          remove
-        </button>
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="p-4 border-b-2">
+        <div className="text-xl mb-2">ID: {product.id}</div>
+        <div className="text-xl mb-2">Title: {product.title}</div>
+        <div className="text-xl mb-2">Price: {product.price}</div>
+        {showDetails && (
+          <>
+            <div className="text-xl mb-2">Category: {product.category}</div>
+            <div className="text-xl mb-2">Image: {product.image}</div>
+            <div className="text-xl mb-2">Rate: {product.rating.rate}</div>
+            <div className="text-xl mb-2">Count: {product.rating.count}</div>
+          </>
+        )}
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={detailsHandler}
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none"
+          >
+            {showDetails ? "Hide Details" : "Details"}
+          </button>
+          <button
+            onClick={deleteHandler}
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none"
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );

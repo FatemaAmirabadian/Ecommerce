@@ -2,9 +2,17 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="form_container">
-      <Link href={"/admin/productmanagement"}><div className="form_title">product management</div></Link>
-      <Link href={"/admin/usermanagement"}><div className="form_title">user management</div></Link>
+    <div className="max-w-lg mx-auto mt-4">
+      <Link href="/admin/productmanagement">
+        <span className="block bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-md mb-4">
+          Product Management
+        </span>
+      </Link>
+      <Link href="/admin/usermanagement">
+        <span className="block bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-md">
+          User Management
+        </span>
+      </Link>
     </div>
   );
 }

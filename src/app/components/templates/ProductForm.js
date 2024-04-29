@@ -1,4 +1,5 @@
-"use client";
+"use client"; // ProductForm.jsx
+
 import React from "react";
 import FormInput from "../elements/FormInput";
 
@@ -24,8 +25,8 @@ function ProductForm({ productForm, setProductForm }) {
   };
 
   return (
-    <div className="form_container">
-      <form>
+    <div className="max-w-lg mx-auto mt-4">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">
         <FormInput
           name="id"
           label="Id"
