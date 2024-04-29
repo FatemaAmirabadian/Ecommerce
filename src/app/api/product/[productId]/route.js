@@ -9,14 +9,11 @@ export async function GET(request, context) {
     console.log(err);
     return NextResponse.json({ error: "error in connect db" }, { status: 500 });
   }
-  
+
   const id = context.params.productId;
-  const data = await Product.findOne({ _id: id });
+  const data = await Product.findOne({ id });
   try {
-    return NextResponse.json(
-      { data },
-      { status: 200 }
-    );
+    return NextResponse.json({ data }, { status: 200 });
   } catch (err) {
     console.log(err);
     return NextResponse.json({
