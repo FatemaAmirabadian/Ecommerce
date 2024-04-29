@@ -33,16 +33,16 @@ export async function GET() {
   }
 
   return NextResponse.json(
-    { data: products },
+    { data: products }, // Ensure that products is wrapped in a 'data' property
     {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin":
-          "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
+        "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
       },
     }
   );
 }
+
 
 export async function POST(request) {
   try {
