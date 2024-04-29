@@ -3,7 +3,7 @@ import React from "react";
 function UserCard({ user }) {
   console.log({ user });
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 lg:p-8">
+    <div className="bg-white rounded-lg shadow-lg p-4 mb-5 mx-auto md:p-6 lg:p-8">
       <div className="mb-4">
         <label className="block text-sm font-bold mb-2" htmlFor="email">
           Email
@@ -11,7 +11,7 @@ function UserCard({ user }) {
         <div className="text-lg">{user.email}</div>
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-bold mb-2" htmlFor="password">
+        <label className="block text-sm font-bold mb-2 overflow-hidden" htmlFor="password">
           Password
         </label>
         <div className="text-lg">{user.password}</div>
