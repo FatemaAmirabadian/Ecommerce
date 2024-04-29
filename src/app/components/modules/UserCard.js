@@ -11,10 +11,10 @@ function UserCard({ user }) {
         <div className="text-lg">{user.email}</div>
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-bold mb-2 overflow-hidden" htmlFor="password">
+        <label className="block text-sm font-bold mb-2" htmlFor="password">
           Password
         </label>
-        <div className="text-lg">{user.password}</div>
+        <div className="text-lg max-w-sm overflow-hidden">{user.password}</div>
       </div>
       <div className="mb-4">
         <label className="block text-sm font-bold mb-2" htmlFor="firstName">
