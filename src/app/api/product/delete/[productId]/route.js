@@ -14,10 +14,10 @@ export async function DELETE(req, context) {
       { message: "آگهی موردنظر حذف شد" },
       { 
         status: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
-          "Access-Control-Allow-Methods": "DELETE", // Allow only DELETE requests
-        },
+        // headers: {
+        //   "Access-Control-Allow-Origin": "https://e-commerce-eight-sand.vercel.app", // Allow requests only from this domain
+        //   "Access-Control-Allow-Methods": "DELETE", // Allow only DELETE requests
+        // },
       }
     );
   } catch (err) {
