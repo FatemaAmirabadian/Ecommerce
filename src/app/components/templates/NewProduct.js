@@ -24,6 +24,7 @@ function NewProduct() {
       method: "POST",
       body: JSON.stringify(productForm),
       headers: { "Content-Type": "application/json" },
+    cache: "no-store",
     });
       router.push("/admin/productmanagement/manageProducts");
   };

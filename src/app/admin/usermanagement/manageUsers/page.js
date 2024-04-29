@@ -5,6 +5,7 @@ async function page() {
   const res = await fetch("https://crm-pi-ten.vercel.app/api/user", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
+    cache: "no-store",
   });
   const data = await res.json();
   const users = await data.data;

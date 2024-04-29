@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TextInput from "./TextInput";
-import Link from "next/link";
 
 function Form({ onSubmit }) {
   const [email, setEmail] = useState("");

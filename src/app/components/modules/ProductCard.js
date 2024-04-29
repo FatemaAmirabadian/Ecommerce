@@ -10,6 +10,7 @@ function ProductCard({ product }) {
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
+        cache: "no-store",
       }
     );
 
